@@ -7,6 +7,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/login', function () {
-    return view('Login');
+    return view('auth.login');
 });
 Route::get('/index', [DashboardController::class, 'index']);

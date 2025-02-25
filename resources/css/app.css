@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import 'bootstrap';
+@import '/admin-lte/dist/css/adminlte.css';
+@import './custom/login.css'
