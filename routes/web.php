@@ -10,7 +10,8 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('auth.login');
 });
-Route::get('/index', [DashboardController::class, 'index']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::prefix('user-profile')->name('profile.')->group(function () {
     Route::get('/update-profile', [UserController::class, 'showUpdateProfilePage'])->name('update-profile');

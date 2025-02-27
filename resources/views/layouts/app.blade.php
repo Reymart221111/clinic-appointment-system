@@ -10,7 +10,7 @@
     @include('Links.links')
 </head>
 
-<body class="wrapper layout-fixed  light-mode ">
+<body class="wrapper layout-fixed  light-mode">
     <div class="preloader flex-column justify-content-center align-items-center ">
         <img src="" class="" alt="AdminLTELogo" height="50" width="50">
     </div>
