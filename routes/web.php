@@ -9,7 +9,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.page');
+Route::post('/login', [AuthController::class, 'login'])->name('login.user');
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'auth.admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

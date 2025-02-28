@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Enums\UserRoles;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,12 +15,9 @@ class AuthService
     public function loginUser(array $credentials): void
     {
         $user = User::where('email', $credentials['email'])->first();
-
         $this->validateCredentials($user, $credentials);
-
         Auth::login($user);
-
-        $this->redirectToIntendedRoleDashboard();
+        $this->regenerateSession();
     }
 
     public function createDefaultAdmin(): void
@@ -37,40 +35,23 @@ class AuthService
         }
     }
 
-    private function validateCredentials(User $user, array $credentials): void
-    {
-        if (!$user) {
-            return back()->withErrors([
-                'email' => 'Email address does not match records!'
-            ])->onlyInput('email');
-        }
-
-        if (!Hash::check($credentials['password'], $user->password)) {
-            return back()->withErrors([
-                'password' => 'Password is incorrect!'
-            ])->onlyInput('email');
-        }
-    }
-
     private function regenerateSession(): void
     {
         request()->session()->regenerate();
     }
 
-    private function redirectToIntendedRoleDashboard()
+    private function validateCredentials(?User $user, array $credentials): void
     {
-        $user = Auth::user();
-
-        $this->regenerateSession();
-
-        if ($user->role === UserRoles::ADMIN->value) {
-            return redirect()->intended('admin/dashboard');
+        if (!$user) {
+            abort(back()->withErrors([
+                'email' => 'Email address does not match records!'
+            ])->onlyInput('email'));
         }
-
-        if ($user->role === UserRoles::EMPLOYEE->value) {
-            return redirect()->intended('employee/dashboard');
+        
+        if (!Hash::check($credentials['password'], $user->password)) {
+            abort(back()->withErrors([
+                'password' => 'Password is incorrect!'
+            ])->onlyInput('email'));
         }
-
-        return redirect()->intended('/');
     }
 }

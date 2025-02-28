@@ -18,20 +18,34 @@
                     <i class="fas fa-clinic-medical logo-icon"></i>
                 </div>
                 <h3 class="text-center login-header">Clinic Appointment System</h3>
-                <form>
+
+                <!-- Error Alert -->
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="list-unstyled text-center mb-0">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+                <form action="{{ route('login.user') }}" method="POST">
+                    @csrf
                     <div class="mb-4">
                         <label for="email" class="form-label">Email address</label>
                         <div class="input-group">
                             <span class="input-group-text bg-transparent"><i class="fas fa-envelope"></i></span>
-                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                                name="email" placeholder="Enter your email" required value="{{ old('email') }}">
                         </div>
                     </div>
                     <div class="mb-4">
                         <label for="password" class="form-label">Password</label>
                         <div class="input-group">
                             <span class="input-group-text bg-transparent"><i class="fas fa-lock"></i></span>
-                            <input type="password" class="form-control" id="password" placeholder="Enter your password"
-                                required>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                id="password" name="password" placeholder="Enter your password" required>
                             <span class="input-group-text bg-transparent toggle-password" onclick="togglePassword()">
                                 <i class="fas fa-eye-slash" id="toggleIcon"></i>
                             </span>
