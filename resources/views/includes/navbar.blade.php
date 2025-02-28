@@ -26,8 +26,9 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Username</span>
-                <img class="img-profile rounded-circle" src="path/to/user-image.jpg" width="30" height="30"
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->full_name }}</span>
+                <img class="img-profile rounded-circle"
+                    src="{{ Auth::user()->image_path ?? asset('Images/no-profile.png') }}" width="30" height="30"
                     alt="User Image">
             </a>
             <!-- Dropdown - User Information -->

@@ -25,7 +25,7 @@
                         <h3 class="card-title"><i class="fas fa-user"></i> Personal Information</h3>
                     </div>
                     <div class="card-body">
-                        <form action="#" method="POST" id="updateProfileForm">
+                        <form action="#" id="updateProfileForm">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -33,7 +33,8 @@
                                     <div class="mb-3">
                                         <label for="firstName" class="form-label">First Name</label>
                                         <input type="text" class="form-control" id="firstName" name="firstName"
-                                            placeholder="Enter your first name" required>
+                                            placeholder="Enter your first name" value="{{ Auth::user()->first_name }}"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -41,7 +42,8 @@
                                     <div class="mb-3">
                                         <label for="lastName" class="form-label">Last Name</label>
                                         <input type="text" class="form-control" id="lastName" name="lastName"
-                                            placeholder="Enter your last name" required>
+                                            placeholder="Enter your last name" value="{{ Auth::user()->last_name }}"
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +51,7 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
                                 <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter your email address" required>
+                                    placeholder="Enter your email address" value="{{ Auth::user()->email }}" required>
                             </div>
                             <!-- Submit Button -->
                             <div class="d-grid gap-2">
