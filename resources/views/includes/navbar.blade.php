@@ -1,3 +1,4 @@
+@include("includes.role-prefix")
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
     <!-- Left navbar links -->
@@ -32,15 +33,15 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{ route('profile.update-profile') }}">
+                <a class="dropdown-item" href="{{ route($rolePrefix . 'profile.update-profile') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Update Profile
                 </a>
-                <a class="dropdown-item" href="{{ route('profile.update-password') }}">
+                <a class="dropdown-item" href="{{ route($rolePrefix . 'profile.update-password') }}">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Update Password
                 </a>
-                <a class="dropdown-item" href="{{ route('profile.update-profile-picture') }}">
+                <a class="dropdown-item" href="{{ route($rolePrefix . 'profile.update-profile-picture') }}">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Update Profile Picture
                 </a>
