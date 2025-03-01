@@ -8,6 +8,7 @@
     <title>Clinic Appointment System</title>
     <link rel="shortcut icon" href="" type="image/x-icon">
     @include('Links.links')
+    @livewireStyles
 </head>
 
 <body class="wrapper layout-fixed  light-mode">
@@ -28,6 +29,7 @@
         </div>
     </div>
     @include('Links.scripts')
+    @livewireScripts
 </body>
 
 </html>
