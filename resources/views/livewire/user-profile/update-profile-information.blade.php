@@ -7,7 +7,7 @@
                     <div class="card-header">
                         <h3 class="card-title"><i class="fas fa-user"></i> Personal Information</h3>
                     </div>
-                    <x-includes.sessions />
+                    <x-includes.sessions/>
                     <div class="card-body">
                         <form wire:submit.prevent="updateProfileInformation" id="updateProfileForm">
                             @csrf

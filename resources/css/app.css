@@ -1,3 +1,71 @@
 @import 'bootstrap';
 @import '../../node_modules/admin-lte/dist/css/adminlte.css';
 @import './custom/login.css';
+
+/* Base styling for form controls */
+.form-control {
+    padding-right: 40px !important;
+    box-sizing: border-box;
+}
+
+/* Toggle password button styling */
+.toggle-password {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 5 !important; /* Increased z-index to stay on top */
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    background: transparent !important;
+}
+
+/* Ensure toggle button stays visible under all conditions */
+.toggle-password:hover,
+.toggle-password:focus,
+.toggle-password:active {
+    z-index: 6 !important;
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(29, 29, 243, 0.305) !important;
+}
+
+/* Keep toggle visible when input is focused */
+.form-control:focus ~ .toggle-password,
+.form-control:focus + .toggle-password,
+.form-control.is-invalid ~ .toggle-password,
+.form-control.is-invalid + .toggle-password {
+    z-index: 5 !important;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Feedback styling */
+.invalid-feedback.d-block {
+    margin-top: 0.5rem;
+}
+
+.form-text {
+    margin-top: 0.5rem;
+}
+
+/* Remove exclamation mark and adjust padding for invalid inputs */
+.form-control.is-invalid:not(:focus) {
+    background-image: none;
+    padding-right: 40px !important; /* Keep consistent padding */
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+}
+
+/* Override Bootstrap validation styling */
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+    background-image: none;
+}
+
+/* Ensure proper stacking of elements in position-relative containers */
+.position-relative {
+    position: relative;
+}
