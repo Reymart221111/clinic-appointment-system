@@ -7,18 +7,7 @@
                     <div class="card-header">
                         <h3 class="card-title"><i class="fas fa-user"></i> Personal Information</h3>
                     </div>
-                    @if (session()->has('success') || session()->has('error'))
-                    @php
-                    // Determine the message type and content
-                    $type = session()->has('success') ? 'success' : 'error';
-                    $message = session()->get($type);
-                    @endphp
-
-                    <div class="alert alert-{{ $type }} alert-dismissible fade show" role="alert">
-                        {{ $message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    @endif
+                    <x-includes.sessions />
                     <div class="card-body">
                         <form wire:submit.prevent="updateProfileInformation" id="updateProfileForm">
                             @csrf
@@ -28,10 +17,10 @@
                                     <div class="mb-3">
                                         <label for="firstName" class="form-label">First Name</label>
                                         <input type="text"
-                                            class="form-control @error('first_name') is-invalid @enderror"
+                                            class="form-control @error('form.first_name') is-invalid @enderror"
                                             id="firstName" name="firstName" placeholder="Enter your first name"
-                                            wire:model.live="first_name" required>
-                                        @error('first_name')
+                                            wire:model.live="form.first_name" required>
+                                        @error('form.first_name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -42,10 +31,11 @@
                                     <!-- Last Name -->
                                     <div class="mb-3">
                                         <label for="lastName" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control @error('last_name') is-invalid @enderror"
+                                        <input type="text"
+                                            class="form-control @error('form.last_name') is-invalid @enderror"
                                             id="lastName" name="lastName" placeholder="Enter your last name"
-                                            wire:model.live="last_name" required>
-                                        @error('last_name')
+                                            wire:model.live="form.last_name" required>
+                                        @error('form.last_name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -56,10 +46,10 @@
                             <!-- Email -->
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                                    name="email" placeholder="Enter your email address" wire:model.live="email"
-                                    required>
-                                @error('email')
+                                <input type="email" class="form-control @error('form.email') is-invalid @enderror"
+                                    id="email" name="email" placeholder="Enter your email address"
+                                    wire:model.live="form.email" required>
+                                @error('form.email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
