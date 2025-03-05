@@ -10,5 +10,5 @@ import { initImagePreview } from './modules/imageProfilePreview.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     initPasswordToggle();
-    initImagePreview();
+    // initImagePreview();
 });

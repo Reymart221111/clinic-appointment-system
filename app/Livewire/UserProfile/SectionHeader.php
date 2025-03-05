@@ -13,7 +13,7 @@ class SectionHeader extends Component
     {
         $user = Auth::user();
         $userFullName = $user->full_name;
-        $userProfileImage = $user->image_path ?? asset('Images/no-profile.png');
+        $userProfileImage = asset('storage/' . $user->image_path) ?? asset('Images/no-profile.png');
 
         return view('livewire.user-profile.section-header', [
             'userFullName' => $userFullName,

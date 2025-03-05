@@ -27,7 +27,7 @@ class UpdateUserPassword extends Component
     public function resetFields()
     {
         $this->resetErrorBag();
-        $this->form->resetFields(); // Manually reset the form
+        $this->form->resetFields(); 
     }
 
     public function render()
