@@ -1,6 +1,7 @@
 @import 'bootstrap';
 @import '../../node_modules/admin-lte/dist/css/adminlte.css';
 @import './custom/login.css';
+@import './custom/sidebar.css';
 
 /* Base styling for form controls */
 .form-control {
@@ -14,7 +15,8 @@
     right: 0;
     top: 0;
     height: 100%;
-    z-index: 5 !important; /* Increased z-index to stay on top */
+    z-index: 5 !important;
+    /* Increased z-index to stay on top */
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     background: transparent !important;
@@ -31,10 +33,10 @@
 }
 
 /* Keep toggle visible when input is focused */
-.form-control:focus ~ .toggle-password,
-.form-control:focus + .toggle-password,
-.form-control.is-invalid ~ .toggle-password,
-.form-control.is-invalid + .toggle-password {
+.form-control:focus~.toggle-password,
+.form-control:focus+.toggle-password,
+.form-control.is-invalid~.toggle-password,
+.form-control.is-invalid+.toggle-password {
     z-index: 5 !important;
     opacity: 1;
     visibility: visible;
@@ -52,7 +54,8 @@
 /* Remove exclamation mark and adjust padding for invalid inputs */
 .form-control.is-invalid:not(:focus) {
     background-image: none;
-    padding-right: 40px !important; /* Keep consistent padding */
+    padding-right: 40px !important;
+    /* Keep consistent padding */
 }
 
 .form-control.is-invalid {
